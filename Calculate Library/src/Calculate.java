@@ -38,6 +38,9 @@ public class Calculate {
 		if (num1 % num2 == 0 || num2 % num1 == 0) {
 			return true;
 		}
+		if (num1 == 0 || num2 ==0) {
+			throw new IllegalArgumentException("Cannot divide by zero");
+		}
 		else {
 			return false;
 		} // determines whether one of the numbers is divisible by the other
@@ -98,7 +101,7 @@ public class Calculate {
 			else return num3;
 		}
 		else if ( num1 > num2) {
-			if (num2 < )num3 {
+			if (num2 < num3) {
 				return num2;
 			}
 			else return num3;
@@ -108,9 +111,11 @@ public class Calculate {
 		// return Math.min(a,Math.min(b,c)); 
 }
 	public static double round2(double num) {
-		double newnum = (num + 0.005) * 100;
-		newnum = (int) num / 100.0;
-		return newnum;
+		double ifRoundUp = (num + 0.005);
+		double hundred = (double)ifRoundUp * 100;
+		int intHundred = (int)hundred;
+		double newNum = (double)intHundred / 100;
+		return newNum;
 		// rounds to two decimal places
 		//return(Math.round(a*100)/100.0);
 	}
@@ -118,6 +123,9 @@ public class Calculate {
 		double answer = base;
 		if (exp == 0) {
 			return 1;
+		}
+		if (exp < 0) {
+			throw new IllegalArgumentException("Exponent must be a positive integer");
 		}
 		else {
 			for (int i = 1;i < exp; i++) {
@@ -128,8 +136,8 @@ public class Calculate {
 		// this multiplies the base number by the number of exponents
 	}
 	public static int factorial(int num) {
-		if (num == 0) {
-			return 1;
+		if (num <= 0) {
+			throw new IllegalArgumentException("Input must be a positive integer");
 		}
 		else {
 			for(int i = num - 1;i > 0;i--) {
@@ -154,26 +162,34 @@ public class Calculate {
 	public static int gcf(int num1, int num2) {
 		int bigger = (int) Calculate.max(num1,num2);
 		int smaller = (int) Calculate.min(num1,num2);
-		int count = smaller;
-		while(count > 1) {
-			if(bigger % count == 0 && smaller % count == 0) {
-				return count;
+		int testnum = smaller;
+		while(testnum > 1) {
+			if(bigger % testnum == 0 && smaller % testnum == 0) {
+				return testnum;
 			}
 			else {
-				count--;
+				testnum--;
 			}
 		}
 		return 1;
 		// finds the greatest common factor of two numbers
 	} 
-	public static double sqrt(double a) {
-		double ans = 10;
-		while(Calculate.absValue((ans * ans) - a) > 0.0001) {
-			ans =(0.5) * ((a / ans) + ans);
+	public static double sqrt(double num) {
+		if (num < 0) {
+			throw new IllegalArgumentException("Input must be a positive integer");
 		}
-		return Calculate.round2(ans);
-		//this finds the square root of a number and rounds it to the second decimal place
+		else {
+			double estimate = (num / 2);
+			while(Calculate.absValue((estimate * estimate) - num) >= 0.005) {
+				estimate = (0.5 * ((num / estimate) + estimate));
+			}
+			return Calculate.round2(estimate);
+		}
 	}
+	public static String quadForm(int num1, int num2, int num3) {
+		
+	}
+		//this finds the square root of a number and rounds it to the second decimal place
 }
 	
 
