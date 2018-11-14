@@ -6,11 +6,11 @@ public class QuadraticClient {
 		
 		System.out.println("Welcome to the Quadratic Describer!");
 		System.out.println("The standard from of a Quadratic equation is:  ax^(2) + bx + c");
-		System.out.println("Provide inputs for co-efficients a, b, and c with spaces in between each number.");
-		System.out.println("");
 		Boolean exit = false;
 		
 		do {
+			System.out.println("Provide inputs for co-efficients a, b, and c with spaces in between each number.");
+			System.out.println("");
 			double a = userInput.nextDouble();
 			double b = userInput.nextDouble();
 			double c = userInput.nextDouble();
@@ -36,5 +36,6 @@ public class QuadraticClient {
 				userInput.close();
 			}
 		} while (exit == false);
+		
 	}
 }
