@@ -1,6 +1,6 @@
 /* This is the client code for the Calculate Library
  * @author Celeste Liu
- * @version September 6, 2018
+ * @version November 13, 2018
  */
 public class DoMath {
 // this is a class to do math calculations
