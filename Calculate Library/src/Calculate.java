@@ -186,10 +186,31 @@ public class Calculate {
 			return Calculate.round2(estimate);
 		}
 	}
-	public static String quadForm(int num1, int num2, int num3) {
-		
-	}
+	public static String quadForm(int a, int b, int c) {
+		if(Calculate.discriminant(a, b, c) < 0) {
+			return "No roots";
+		}
+		else if(Calculate.discriminant(a, b, c) == 0) {
+			return "One root: 0" ;
+		}
+		else {
+			double small;
+			double large;
+			double discriminant = Calculate.discriminant(a, b, c);
+			double twoRootAdd = (-b + discriminant) / (2 * a);
+			double twoRootMinus = (-b - discriminant) / (2 * a);
+			if(twoRootAdd < twoRootMinus) {
+				small = twoRootAdd;
+				large = twoRootMinus;
+			}
+			else {
+				small = twoRootMinus;
+				large = twoRootAdd;		
+			}
+			return "Two Roots: " + Calculate.round2(small) + " and "+ Calculate.round2(large);
+		}
 		//this finds the square root of a number and rounds it to the second decimal place
+	}
 }
 	
 
