@@ -28,7 +28,7 @@ public class QuadraticClient {
 				System.out.println("");
 			}
 	
-			System.out.println("Do you want to keep going? (Type \"quit\" to end)");
+			System.out.println("Do you want to keep going? (Type \"quit\" to end or \"again\" to continue)");
 			String quit = userInput.next();
 			char confirmQuit = quit.charAt(0);
 			if (confirmQuit == 'q') {
